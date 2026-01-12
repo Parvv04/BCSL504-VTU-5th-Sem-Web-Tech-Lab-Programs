@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>JQuery Manipulation</title>
+        <style>
+            #box {
+                height: 100px;
+                width: 100px;
+                background-color: red;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="para">This is existing para. </p>
+
+        <ul id="list">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+
+        <div id="box"></div>
+
+        <button id="append">Append Content</button>
+        <button id="animate">Animate Box</button>
+
+        <script>
+            $(document).ready(function(){
+                $("#append").click(function(){
+                    $("#para").append("Appended Text. ");
+                    $("#list").append("<li>New Item</li>");
+                });
+                $("#animate").click(function(){
+                    $("#box").animate({
+                        height: "200px",
+                        width: "200px"
+                    }, 1000, function(){
+                        $(this).css("background-color", "green");
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conversions</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    </head>
+    <body>
+        <label for="jsonInput">1.JSON to JS OBJECT</label>
+        <textarea id="jsonInput"></textarea>
+        <button onclick="jsonToObj()">Convert</button>
+        <pre id="jsonOutput"></pre>
+        
+        <label for="dateInput">2.JSON date conversion</label>
+        <textarea id="dateInput"></textarea>
+        <button onclick="dateConversion()">Convert</button>
+        <pre id="dateOutput"></pre>
+
+        <label for="jsonInput2">3.JSON to CSV</label>
+        <textarea id="jsonInput2"></textarea>
+        <button onclick="jsonToCsv()">Convert</button>
+        <pre id="csvOutput"></pre>
+
+        <label for="csvInput">CSV to JSON</label>
+        <textarea id="csvInput"></textarea>
+        <button onclick="csvToJson()">Convert</button>
+        <pre id="jsonOutput2"></pre>
+
+        <label for="hashInput">4.Create Hash</label>
+        <textarea id="hashInput"></textarea>
+        <button onclick="createHash()">Convert</button>
+        <pre id="hashOutput"></pre>
+    <script>
+        function jsonToObj() {
+            const text = document.getElementById("jsonInput").value;
+            const obj = JSON.parse(text);
+            document.getElementById("jsonOutput").textContent = JSON.stringify(obj, null, 2);
+        }
+        function dateConversion(){
+            const text = document.getElementById("dateInput").value;
+            const obj = JSON.parse(text);
+            const date = new Date(obj.date);
+            document.getElementById("dateOutput").textContent = date.toString();
+        }
+        function jsonToCsv(){
+            const text = document.getElementById("jsonInput2").value;
+            const arr = JSON.parse(text);
+            const keys = Object.keys(arr[0]);
+            let csv = keys.join(",")+"\n";
+            arr.forEach(obj =>{
+                csv += keys.map(k => obj[k]).join(",")+"\n";
+            });
+            document.getElementById("csvOutput").textContent = csv;
+        }
+        function csvToJson(){
+            const text = document.getElementById("csvInput").value;
+            const lines = text.split("\n");
+            const keys = lines[0].split(",");
+            const result = [];
+
+            for(let i = 1; i<lines.length; i++){
+                const obj = {};
+                const values = lines[i].split(",");
+                keys.forEach((k,index) => {obj[k]=values[index]});
+                result.push(obj);
+            }
+            document.getElementById("jsonOutput2").textContent = JSON.stringify(result, null, 2);
+        }
+        function createHash(){
+            const text = document.getElementById("hashInput").value;
+            const hash = CryptoJS.SHA256(text).toString();
+            document.getElementById("hashOutput").textContent = hash;
+        }
+    </script>
+        </body>
+</html>

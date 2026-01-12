@@ -1,0 +1,64 @@
+header{
+    background-color: aquamarine;
+    display: flex;
+    height: min-content;
+    padding: 10px;
+    margin: 10px;
+}
+h1{
+    flex: 1;
+    text-align: left;
+}
+nav{
+    text-align: right;
+}
+a{
+    color: rgb(127, 144, 255);
+}
+a:hover{
+    color: rgb(4, 4, 40);
+}
+div{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+article{
+    background-color: lightgrey;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+aside{
+    background-color: lightgrey;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 50%;
+}
+img{
+    padding: 10px;
+    text-align: center;
+    margin: 10px 0;
+}
+section{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 10px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+footer{
+    background-color: aquamarine;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}

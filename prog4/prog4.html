@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration Form</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Registration Form</h1>
+        <form>
+            <div>
+                <label for="firstname">First Name:</label><br>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div>
+                <label for="lastname">Last Name:</label><br>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required></input>
+            </div>
+            <div>
+                <label for="dob">Date of Birth</label><br>
+                <input type="date" id="dob" name="dob">
+            </div>
+            <div>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label>Gender</label><br>
+                <input type="radio" id="male" name="male" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="female" value="female">
+                <label for="female">Female</label>
+            </div>
+            <div>
+                <label for="country">Country</label><br>
+                <select id="country" name="country">
+                    <option value="usa">USA</option>
+                    <option value="India">India</option>
+                    <option value="uk">UK</option>
+                    <option value="canada">Canada</option>
+                </select>
+            </div>
+            <div>
+                <label for="about">About You:</label><br>
+                <textarea id="about" name="about" rows="4" cols="50"></textarea>
+            </div>
+            <div class="buttons">
+                <input type="submit" value="Register"></input>
+                <input type="reset" value="Reset"></input>
+            </div>
+        </form>
+    </body>
+</html>
