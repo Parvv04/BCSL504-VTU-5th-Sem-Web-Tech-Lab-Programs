@@ -1,87 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>AJAX Program</title>
-
-    <!-- jQuery library required for jQuery AJAX -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-        }
-        button {
-            margin: 5px;
-            padding: 8px;
-        }
-        #output {
-            margin-top: 10px;
-            border: 1px solid black;
-            padding: 10px;
-            white-space: pre-wrap;
-        }
-    </style>
-</head>
-
-<body>
-
-<h2>AJAX Examples</h2>
-
-<button onclick="plainAjax()">Plain AJAX</button>
-<button onclick="jqueryAjax()">jQuery AJAX</button>
-<button onclick="loadJSON()">getJSON()</button>
-<button onclick="parseJSON()">parseJSON()</button>
-
-<div id="output"></div>
-
-<script>
-
-    /* a. AJAX without jQuery */
-    function plainAjax() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "text.txt", true);
-
-        xhr.onload = function () {
-            if (xhr.status == 200) {
-                document.getElementById("output").innerText = xhr.responseText;
+<html lang="en">
+    <head>
+        <title>AJAX Methods</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <style>
+            #output{
+                white-space: pre-line;
             }
-        };
+        </style>
+    </head>
+    <body>
+        <h1>AJAX</h1>
 
-        xhr.send();
-    }
+        <button onclick="plainAJAX()">Load Text (plain AJAX)</button>
+        <button onclick="jqueryAjax()">Load Text (jQuery AJAX)</button>
+        <button onclick="loadJSON()">Load JSON (getJSON)</button>
+        <button onclick="parseJSON()">Load and Parse JSON (parseJSON)</button>
 
-    /* b. AJAX with jQuery */
-    function jqueryAjax() {
-        $.ajax({
-            url: "text.txt",
-            method: "GET",
-            success: function (data) {
-                $("#output").text(data);
+        <div id="output"></div>
+
+        <script>
+            function plainAJAX(){
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET","text.txt",true);
+
+                xhr.onload=(function(){
+                    if(xhr.status == 200){
+                        document.getElementById("output").textContent = xhr.responseText;
+                    }
+                });
+
+                xhr.send();
             }
-        });
-    }
 
-    /* c. getJSON() method */
-    function loadJSON() {
-        $.getJSON("data.json", function (data) {
-            $("#output").text(JSON.stringify(data, null, 2));
-        });
-    }
+            function jqueryAjax(){
+                $.ajax({
+                    url:"text.txt",
+                    method:"GET",
+                    success: function(data){
+                        $("#output").text(data);
+                    }
+                });
+            }
 
-    /* d. parseJSON() method */
-    function parseJSON() {
-        $.get("data.json", function (data) {
-            var obj = $.parseJSON(JSON.stringify(data));
-            $("#output").text(
-                "Name: " + obj.name +
-                "\nAge: " + obj.age +
-                "\nCity: " + obj.city
-            );
-        });
-    }
+            function loadJSON(){
+                $.getJSON("data.json", function(data){
+                    $("#output").text(JSON.stringify(data,null,2));
+                });
+            }
 
-</script>
-
-</body>
+            function parseJSON(){
+                $.get("data.json", function(data){
+                    var obj = $.parseJSON(JSON.stringify(data));
+                    $("#output").text(
+                        "Name: " + obj.name + "\n"+
+                        "Age: "+ obj.age + "\n"+
+                        "City: "+ obj.city
+                    );
+                });
+            }
+        </script>
+    </body>
 </html>
